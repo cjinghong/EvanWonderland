@@ -149,7 +149,7 @@ public class Wonderland: UIView {
     }
 
     // MARK: - Gestures / user inputs
-    func tapped(_ sender: UITapGestureRecognizer) {
+    @objc func tapped(_ sender: UITapGestureRecognizer) {
         // Show default tap effect
         if let tapEffectView = self.tapEffectView {
             // View already exist, remove it.
@@ -203,7 +203,7 @@ public class Wonderland: UIView {
     }
 
     /// Show torch light
-    func longTapped(_ sender: UILongPressGestureRecognizer) {
+    @objc func longTapped(_ sender: UILongPressGestureRecognizer) {
         if self.timeOfDay != .night { return } // Gesture only works at night
 
         let location = sender.location(in: self.backgroundView)
@@ -211,7 +211,7 @@ public class Wonderland: UIView {
         let maskImage = UIImage(named: "lightbeam")
         let mask = CALayer()
         mask.contents = maskImage?.cgImage
-        mask.contentsGravity  = kCAGravityResizeAspect
+        mask.contentsGravity  = CALayerContentsGravity.resizeAspect
         mask.bounds = CGRect(x: 0, y: 0, width: 500, height: 230)
         mask.anchorPoint = CGPoint(x: 1, y: 0.5)
 
@@ -238,11 +238,11 @@ public class Wonderland: UIView {
         }
     }
 
-    func volumeChanged(_ sender: UISlider) {
+    @objc func volumeChanged(_ sender: UISlider) {
         self.audioPlayer?.volume = sender.value
     }
 
-    func stickyViewPanned(_ sender: UIPanGestureRecognizer) {
+    @objc func stickyViewPanned(_ sender: UIPanGestureRecognizer) {
         self.animator?.removeAllBehaviors()
         if let view = sender.view {
             if sender.state == .began {
@@ -269,7 +269,7 @@ public class Wonderland: UIView {
         }
     }
 
-    func toggleDayNight(_ sender: UIButton) {
+    @objc func toggleDayNight(_ sender: UIButton) {
         switch self.timeOfDay {
         case .day:
             self.toNightTime()
@@ -278,7 +278,7 @@ public class Wonderland: UIView {
         }
     }
 
-    func play(_ sender: UIButton?) {
+    @objc func play(_ sender: UIButton?) {
         self.hidePlayButton()
 
         // Disables interaction with Evan when story starts.
@@ -336,7 +336,7 @@ public class Wonderland: UIView {
                                  y: self.frame.height - height - 8,
                                  width: width, height: height)
         self.playButton = UIButton(frame: buttonFrame)
-        self.playButton!.setBackgroundImage(UIImage(named: "play"), for: UIControlState.normal)
+        self.playButton!.setBackgroundImage(UIImage(named: "play"), for: UIControl.State.normal)
         self.playButton!.alpha = 0
         self.playButton!.addTarget(self, action: #selector(Wonderland.play(_:)), for: .touchUpInside)
         self.addSubview(self.playButton!)

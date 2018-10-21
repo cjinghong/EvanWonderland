@@ -170,7 +170,7 @@ public class Evan: UIView {
 
     // MARK: - Gestures
     private var previousWalkingSpeed: WalkingSpeed?
-    func evanTapped(_ sender: UILongPressGestureRecognizer) {
+    @objc func evanTapped(_ sender: UILongPressGestureRecognizer) {
         // Store reference of the original image
         previousWalkingSpeed = self.walkingSpeed
 
@@ -202,7 +202,7 @@ public class Evan: UIView {
     }
 
     /// Slows down Evan
-    func swipedLeft(_ sender: UISwipeGestureRecognizer) {
+    @objc func swipedLeft(_ sender: UISwipeGestureRecognizer) {
         switch self.walkingSpeed {
         case .speedWalking:
             self.walk()
@@ -214,7 +214,7 @@ public class Evan: UIView {
     }
 
     /// Speeds up Evan
-    func swipedRight(_ sender: UISwipeGestureRecognizer) {
+    @objc func swipedRight(_ sender: UISwipeGestureRecognizer) {
         switch self.walkingSpeed {
         case .notWalking:
             self.walk()
@@ -226,14 +226,14 @@ public class Evan: UIView {
     }
 
     /// Makes evan sit on the ground
-    func swipedDown(_ sender: UISwipeGestureRecognizer) {
+    @objc func swipedDown(_ sender: UISwipeGestureRecognizer) {
         if self.walkingSpeed == .notWalking {
             self.sit()
         }
     }
 
     /// Returns to standing position if Evan is sitting.
-    func swipedUp(_ sender: UISwipeGestureRecognizer) {
+    @objc func swipedUp(_ sender: UISwipeGestureRecognizer) {
         if self.isSitting {
             self.stop()
         }
