@@ -22,7 +22,7 @@ open class Tree: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func tapped(_ sender: UITapGestureRecognizer) {
+    @objc func tapped(_ sender: UITapGestureRecognizer) {
         // Init audioPlayer (if applicable) and then play.
         if self.audioPlayer == nil {
             if let soundFileURL = Bundle.main.url(forResource: "leaf", withExtension: "mp3") {

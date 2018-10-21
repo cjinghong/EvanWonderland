@@ -93,7 +93,7 @@ public class WeatherBox: UIImageView {
     }
 
     // MARK: - Gestures
-    func viewTapped(_ sender: UITapGestureRecognizer) {
+    @objc func viewTapped(_ sender: UITapGestureRecognizer) {
         guard let view = sender.view else { return }
         // Trigger selection if view isnt already selected.
         if view.backgroundColor == self.itemDeselectedColour {

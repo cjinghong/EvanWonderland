@@ -14,7 +14,7 @@ view.backgroundColor = UIColor(red: 65/255, green: 65/255, blue: 75/255, alpha: 
 
 // Creating Wonderland where Evan lives in.
 let wonderland = Wonderland()
-wonderland.skyColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+//wonderland.skyColor = .blue
 wonderland.groundColor = #colorLiteral(red: 0.584132339, green: 0.2527932002, blue: 0.1236199935, alpha: 1)
 view.addSubview(wonderland)
 //: Meet Evan.
